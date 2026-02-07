@@ -7,7 +7,7 @@
   width:100vw;
   font-weight: 400;
   @apply bg-linear-to-b from-blue-500 to-blue-950;
-  color-scheme: light dark;
+  
   color: rgba(255, 255, 255, 0.87);
   background-color: bg-cyan-50;
   font-synthesis: none;
@@ -68,7 +68,7 @@ button:hover {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: white;
     background-color: #ffffff;
   }
   a:hover {
