@@ -4,7 +4,7 @@ export default function Dictionary(){
     return(
         <>
             <main>
-                <h1>The dictionary goes here, right?</h1>
+                <h1>The dictionary should be here, right?</h1>
             </main>
         </>
     );
