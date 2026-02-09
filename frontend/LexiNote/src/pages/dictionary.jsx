@@ -4,7 +4,7 @@ export default function Dictionary(){
     return(
         <>
             <main>
-                <h1>Thank you frends 😭</h1>
+                <h1>Dictionary Page</h1>
             </main>
         </>
     );
