@@ -8,7 +8,7 @@ export default function Navbar(){
             <Link className="link" to="/dictionary">Dictionary📕</Link>
             <Link className="link" to="/editor">Text Editor📝</Link>
             <Link className="link" to="/status">Status📊</Link>
-            <Link className="link" to="/">Empty Home</Link>
+            <Link className="link" to="/wotd">Word of the Day!</Link>
 			<button className="dark_mode">⏾</button>
         </div>
     );
