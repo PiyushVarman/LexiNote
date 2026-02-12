@@ -6,6 +6,7 @@ export default function Editor(){
             <main>
                 <h1>Rithanya</h1>
                 <h1>Rithanya</h1>
+                <h1>Rithanya</h1>
             </main>
         </>
     );
