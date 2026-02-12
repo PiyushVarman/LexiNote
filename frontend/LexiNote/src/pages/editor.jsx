@@ -4,7 +4,7 @@ export default function Editor(){
     return(
         <>
             <main>
-                <h1>Editor</h1>
+                <h1>Rithanya</h1>
             </main>
         </>
     );
