@@ -5,7 +5,7 @@ export default function Editor(){
         <>
             <main>
                 <h1>Rithanya</h1>
-                <h1>Harshne</h1>
+                <h1>HarshneV</h1>
             </main>
         </>
     );
