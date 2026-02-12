@@ -5,6 +5,7 @@ export default function Editor(){
         <>
             <main>
                 <h1>Rithanya</h1>
+                <h1>Shamithaa</h1>
                 <h1>Piyush Varman</h1>
             </main>
         </>
