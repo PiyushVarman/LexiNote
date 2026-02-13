@@ -4,9 +4,7 @@ export default function Editor(){
     return(
         <>
             <main>
-                <h1>Rithanya</h1>
-                <h1>Shamithaa</h1>
-                <h1>Piyush Varman</h1>
+                <h1>Editor Page</h1>
             </main>
         </>
     );

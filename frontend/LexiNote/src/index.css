@@ -6,7 +6,7 @@
   height: 100vh;
   width:100vw;
   font-weight: 400;
-  @apply bg-linear-to-b from-blue-500 to-blue-950;
+  @apply bg-linear-to-b from-blue-400 to-blue-900;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: bg-cyan-50;
@@ -28,13 +28,13 @@ main
   @apply my-[5vh];
   @apply py-[10vh];
   @apply mx-[2vw];
-  @apply rounded-xl;
-  @apply bg-black/25;
+  @apply rounded-3xl;
+  @apply bg-black/30;
   transition: all 0.2s ease-in-out;
 }
 
 main:hover{
-  @apply bg-black/30;
+  @apply bg-black/40;
 }
 
 a {
