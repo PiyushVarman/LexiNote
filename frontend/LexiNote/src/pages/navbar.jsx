@@ -6,9 +6,9 @@ export default function Navbar(){
         <div className="topnav">
             <Link className="home" to="/">✏️LexiNote</Link>
             <Link className="link" to="/dictionary">Dictionary📕</Link>
+            <Link className="link" to="/wotd">Random Word</Link>
             <Link className="link" to="/editor">Text Editor📝</Link>
             <Link className="link" to="/status">Status📊</Link>
-            <Link className="link" to="/wotd">Word of the Day!</Link>
 			<button className="dark_mode">⏾</button>
         </div>
     );

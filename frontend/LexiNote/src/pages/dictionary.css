@@ -1,0 +1,17 @@
+input
+{
+    font-family: 'Montserrat';
+    color: black;
+    border:0.5px solid black;
+    border-radius: 1%;
+    margin:auto;
+    padding:1vw;
+    background-color: white;
+    font-size:2vh;
+    transition: 0.5s ease-in-out;
+}
+
+input:focus{
+    scale: 110%;
+    border-width: 0.5px;
+}
