@@ -7,7 +7,7 @@ export default function Dictionary(){
             <main>
                 <h1>Dictionary</h1>
                 <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search a word..." />
+                    <input type="text" id="searchInpu" placeholder="Search a word..." />
                     <button id="searchBtn">Search</button>
                 </div>
             </main>
