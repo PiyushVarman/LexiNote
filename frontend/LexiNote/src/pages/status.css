@@ -11,3 +11,22 @@ p{
 {
     line-height:2;
 }
+
+.linktext
+{
+    color: white;
+    font-size: 2vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    border: 2px solid white;
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+    font-family: Georgia;
+}
+
+.linktext:hover
+{
+    color: darkblue;
+    background-color: white;
+    font-size:2.5vw;
+}
