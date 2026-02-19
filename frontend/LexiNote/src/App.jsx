@@ -16,7 +16,7 @@ export default function App() {
         <Route path="/status" element={<Status/>} />
         <Route path="/dictionary" element={<Dictionary/>} />
         <Route path="/editor" element={<Editor/>}/>
-        <Route path="/wotd" element={<WOTD/>}/>
+        <Route path="/random_word" element={<WOTD/>}/>
       </Routes>
     </>
   );
