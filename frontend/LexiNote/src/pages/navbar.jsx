@@ -6,7 +6,7 @@ export default function Navbar(){
         <div className="topnav">
             <Link className="home" to="/">✏️LexiNote</Link>
             <Link className="link" to="/dictionary">Dictionary📕</Link>
-            <Link className="link" to="/wotd">Random Word</Link>
+            <Link className="link" to="/random_word">Random Word</Link>
             <Link className="link" to="/editor">Text Editor📝</Link>
             <Link className="link" to="/status">Status📊</Link>
 			<button className="dark_mode">⏾</button>
