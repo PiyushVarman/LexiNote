@@ -1,40 +1,59 @@
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
 import dotenv from "dotenv";
-import { MongoClient } from "mongodb";
 
 dotenv.config();
 
-const uri = process.env.MONGO_URI;
-const client = new MongoClient(uri);
+const app = express();
 
-async function run() {
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// MongoDB Connection
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Atlas Connected"))
+  .catch((err) => console.log(err));
+
+// Schema (matches your existing DB structure)
+const wordSchema = new mongoose.Schema({
+  word: { type: String, required: true },
+  pos: String,
+  definition: String,
+  synonyms: [String],
+  source: String,
+  createdAt: { type: Date, default: Date.now },
+});
+
+// Explicitly using "words" collection
+const Word = mongoose.model("Word", wordSchema, "words");
+
+console.log(process.env.MONGO_URI);
+console.log(process.env.PORT);
+
+// GET Word Route
+app.get("/word/:word", async (req, res) => {
   try {
-    // connect
-    await client.connect();
-    console.log("✅ Connected to MongoDB");
+    const searchWord = req.params.word;
 
-    // select DB and collection
-    const db = client.db("lexinote");
-    const collection = db.collection("test_words");
-
-    // insert one document
-    await collection.insertOne({
-      word: "hello",
-      definition: "a greeting",
-      source: "test"
+    const results = await Word.find({
+      word: { $regex: new RegExp("^" + searchWord + "$", "i") }
     });
 
-    console.log("✅ Document inserted");
+    if (!results.length) {
+      return res.status(404).json({ message: "Not found" });
+    }
 
-    // retrieve all documents
-    const docs = await collection.find({}).toArray();
-    console.log("📦 Documents in collection:");
-    console.log(docs);
+    res.json(results);
 
-  } catch (err) {
-    console.error(err);
-  } finally {
-    await client.close();
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
   }
-}
+});
 
-run();
+// Start Server
+app.listen(process.env.PORT, () => {
+  console.log(`Backend running at http://localhost:${process.env.PORT}`);
+});
