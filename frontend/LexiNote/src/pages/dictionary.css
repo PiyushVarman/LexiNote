@@ -52,3 +52,50 @@
     transform: translateY(-1px);
   }
  
+  .results {
+  width: 100%;
+  margin: 0 auto 3rem auto;
+  text-align: left;
+  padding: 0 1rem;
+}
+
+.results h2 {
+  font-size: 28px;
+  text-transform: capitalize;
+  text-align:center;
+  color: "white";
+  border-bottom: 2px solid var(--primary);
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+.meaning {
+  background: var(--light-bg);
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  transition: 0.2s ease;
+}
+
+.meaning:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.meaning strong {
+  color: var(--primary);
+}
+
+.meaning p {
+  margin: 0.3rem 0;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 500;
+}
