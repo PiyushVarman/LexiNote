@@ -13,6 +13,8 @@ export default function Status(){
                     <p><strong>React.js: </strong>Versatile tool used for frontend design and functionality</p>
                     <p><strong>Node.js: </strong>Provides server-side runtime environment</p>
                 </div>
+                <br/><br/>
+                <a className='linktext' href="https://github.com/piyushvarman/lexinote">Source Code</a>
             </main>
         </>
     );
