@@ -8,7 +8,7 @@ export default function WOTD(){
 
     const handleRandom = async () => {
         try{
-            const response = await fetch("http://localhost:5000/random");
+            const response = await fetch("http://lexinote.onrender.com/random");
             
             if (!response.ok)
             {
