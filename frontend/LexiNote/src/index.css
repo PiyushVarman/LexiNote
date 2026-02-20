@@ -25,12 +25,14 @@ h1{
 main
 {
   
-  @apply min-h-[80vh];
+  @apply h-[80vh];
+
   @apply my-[4vh];
   @apply py-[10vh];
   @apply mx-[2vw];
   @apply rounded-3xl;
   @apply bg-black/30;
+  overflow: auto;
   transition: all 0.2s ease-in-out;
   opacity: 0;
   transform: translateY(10vh);

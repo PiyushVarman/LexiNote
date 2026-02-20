@@ -10,8 +10,9 @@ export default function Dictionary() {
   const handleSearch = async () => {
     if (!word.trim()) return;
 
+    const formattedWord=word.trim().replace(/\s+/g,"_");
     try {
-      const response = await fetch(`https://lexinote.onrender.com/word/${word}`);
+      const response = await fetch(`https://lexinote.onrender.com/word/${formattedWord}`);
       console.log("Response status:", response.status);
       console.log(results);
       if (!response.ok) {
@@ -53,7 +54,7 @@ export default function Dictionary() {
 
         {results.length > 0 && (
           <>
-            <h2>{results[0].word}</h2>
+            <h2>{results[0].word.replace(/_/g," ")}</h2>
             <br/>
             <p>{results.length} found</p>
             <br/>
@@ -63,7 +64,8 @@ export default function Dictionary() {
                 <p>{item.definition}</p>
                 {item.synonyms && item.synonyms.length > 0 && (
                   <p>
-                    <strong>Synonyms:</strong> {item.synonyms.join(", ")}
+                    <strong>Synonyms: </strong>
+                    {item.synonyms.map(syn => syn.replace(/_/g," ")).join(", ")}
                   </p>
                 )}
               </div>
