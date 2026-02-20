@@ -2,11 +2,11 @@
 @import "tailwindcss";
 
 :root {
+  @apply bg-linear-to-b from-blue-400 to-blue-900;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   height: 100vh;
   width:100vw;
   font-weight: 400;
-  @apply bg-linear-to-b from-blue-400 to-blue-900;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: bg-cyan-50;
@@ -24,7 +24,8 @@ h1{
 
 main
 {
-  @apply h-[80vh];
+  
+  @apply min-h-[80vh];
   @apply my-[4vh];
   @apply py-[10vh];
   @apply mx-[2vw];
