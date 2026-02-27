@@ -2,6 +2,11 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
+import multer from "multer";
+import mammoth from "mammoth";
+import fs from "fs";
+
+import {Document, Packer, Paragraph, TextRun} from "docx";
 
 dotenv.config();
 
@@ -23,6 +28,8 @@ const wordSchema = new mongoose.Schema({
   source: String,
   createdAt: { type: Date, default: Date.now },
 });
+
+const upload = multer({ dest: "uploads/" });
 
 const Word = mongoose.model("Word", wordSchema, "words");
 
@@ -60,6 +67,55 @@ app.get("/random", async (req, res) => {
 
   } catch (error) {
     res.status(500).json({ message: "Server error" });
+  }
+});
+
+
+app.post("/upload", upload.single("file"), async (req, res) => {
+  try {
+    const result = await mammoth.convertToHtml({
+      path: req.file.path
+    });
+
+    fs.unlinkSync(req.file.path);
+
+    res.json({ content: result.value });
+
+  } catch (error) {
+    res.status(500).json({ message: "File conversion failed" });
+  }
+});
+
+
+app.post("/save", async (req, res) => {
+  try {
+    const html = req.body.content;
+
+    const doc = new Document({
+      sections: [{
+        children: [
+          new Paragraph({
+            children: [
+              new TextRun(html.replace(/<[^>]*>?/gm, ""))
+            ]
+          })
+        ]
+      }]
+    });
+
+    const buffer = await Packer.toBuffer(doc);
+
+    res.set({
+      "Content-Type":
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "Content-Disposition":
+        "attachment; filename=edited.docx"
+    });
+
+    res.send(buffer);
+
+  } catch (error) {
+    res.status(500).json({ message: "Save failed" });
   }
 });
 
