@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import multer from "multer";
 import mammoth from "mammoth";
 import fs from "fs";
-import htmlDocx from "html-docx-js";
+import HTMLtoDOCX from "html-to-docx";
 
 dotenv.config();
 
@@ -103,7 +103,11 @@ app.post("/save", async (req, res) => {
       </html>
     `;
 
-    const docxBuffer = htmlDocx.asBuffer(fullHtml);
+    const buffer = await HTMLtoDOCX(fullHtml, null, {
+      table: { row: { cantSplit: true } },
+      footer: false,
+      pageNumber: false,
+    });
 
     res.set({
       "Content-Type":
@@ -112,9 +116,10 @@ app.post("/save", async (req, res) => {
         "attachment; filename=edited.docx"
     });
 
-    res.send(docxBuffer);
+    res.send(buffer);
 
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Save failed" });
   }
 });
