@@ -6,7 +6,6 @@ import multer from "multer";
 import mammoth from "mammoth";
 import fs from "fs";
 import htmlDocx from "html-docx-js";
-import {Document, Packer, Paragraph, TextRun} from "docx";
 
 dotenv.config();
 
@@ -92,14 +91,19 @@ app.post("/save", async (req, res) => {
   try {
     const html = req.body.content;
 
-    const docxBuffer = htmlDocx.asBlob(`
+    const fullHtml = `
       <!DOCTYPE html>
       <html>
-      <body>
-        ${html}
-      </body>
+        <head>
+          <meta charset="utf-8">
+        </head>
+        <body>
+          ${html}
+        </body>
       </html>
-    `);
+    `;
+
+    const docxBuffer = htmlDocx.asBlob(fullHtml);
 
     res.set({
       "Content-Type":
