@@ -13,6 +13,8 @@ export default function Editor() {
 
   const [status, setStatus] = useState("Ready");
   const [wordCount, setWordCount] = useState(0);
+  const [docTitle, setDocTitle] = useState("");
+  
 
   useEffect(() => {
     if (!quillRef.current) {
@@ -76,7 +78,7 @@ export default function Editor() {
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = "edited.docx";
+    a.download = `${docTitle||"Untitled Document"}.docx`;
     a.click();
 
     setStatus("Downloaded");
@@ -93,6 +95,7 @@ export default function Editor() {
   };
 
   return (
+    
     <div className="container">
       <div className="toolbar">
         <input
@@ -109,19 +112,28 @@ export default function Editor() {
         Drag & Drop .docx file here
       </div>
 
+      <input
+      type="text"
+      id="docTitle"
+      className="doc-title"
+      value={docTitle}
+      onChange={(e) => setDocTitle(e.target.value)}
+      placeholder="Enter Document Name"
+      />
+
       {/* EXACT TOOLBAR — inserted here without moving layout */}
       <div id="toolbar">
-        <select className="ql-font"></select>
-        <select className="ql-size"></select>
-        <button className="ql-bold"></button>
-        <button className="ql-italic"></button>
-        <button className="ql-underline"></button>
-        <button className="ql-strike"></button>
-        <button className="ql-color"></button>
-        <button className="ql-background"></button>
-        <button className="ql-align"></button>
-        <button className="ql-list" value="ordered"></button>
-        <button className="ql-list" value="bullet"></button>
+        <select className="ql-font" title="Font"></select>
+        <select className="ql-size" title="Size"></select>
+        <button className="ql-bold" title="Bold"></button>
+        <button className="ql-italic" title="Italicize"></button>
+        <button className="ql-underline" title="Underline"></button>
+        <button className="ql-strike" title="Strikethrough"></button>
+        <select className="ql-color" title="Font Colour"></select>
+        <select className="ql-background" title="Highlight"></select>
+        <select className="ql-align" title=""></select>
+        <button className="ql-list" value="ordered" title="Ordered List"></button>
+        <button className="ql-list" value="bullet" title="Bullets"></button>
       </div>
 
       <div id="editortools">

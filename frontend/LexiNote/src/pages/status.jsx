@@ -14,7 +14,7 @@ export default function Status(){
                     <p><strong>Node.js: </strong>Provides server-side runtime environment</p>
                 </div>
                 <br/><br/>
-                <a className='linktext' href="https://github.com/piyushvarman/lexinote">Source Code</a>
+                <a className='linktext' href="https://github.com/piyushvarman/lexinote" target="_blank">Source Code</a>
             </main>
         </>
     );

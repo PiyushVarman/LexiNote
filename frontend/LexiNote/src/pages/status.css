@@ -14,19 +14,25 @@ p{
 
 .linktext
 {
+    display: inline-block;
     color: white;
     font-size: 2vw;
     padding-left: 0.5vw;
     padding-right: 0.5vw;
     border: 2px solid white;
-    border-radius: 10px;
-    transition: 0.2s ease-in-out;
-    font-family: Georgia;
+    background-color: #2b7fff;
+    transition: 0.2s all ease-in-out;
+    font-family: Consolas;
 }
 
 .linktext:hover
 {
-    color: darkblue;
-    background-color: white;
-    font-size:2.5vw;
+    border-radius: 10px;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    transform: scale(1.1);
+}
+
+.linktext:active{
+    transform: scale(0.9);
 }
