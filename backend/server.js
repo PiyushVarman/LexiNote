@@ -88,44 +88,63 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 });
 
 
+import puppeteer from "puppeteer";
+
 app.post("/save", async (req, res) => {
   try {
     const html = req.body.content;
 
+    if (!html) {
+      return res.status(400).json({ message: "Empty document" });
+    }
+
     const fullHtml = `
       <!DOCTYPE html>
       <html>
-        <head>
-          <meta charset="utf-8">
-        </head>
-        <body>
-          ${html}
-        </body>
+      <head>
+        <meta charset="utf-8" />
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+          }
+          * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+        </style>
+      </head>
+      <body>
+        ${html}
+      </body>
       </html>
     `;
 
-    console.log("HTML length:", html.length);
-
-    const buffer = await HTMLtoDOCX(fullHtml, null, {
-      table: { row: { cantSplit: true } },
-      footer: false,
-      pageNumber: false,
+    const browser = await puppeteer.launch({
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
 
-    console.log("Buffer size:", buffer.length);
+    const page = await browser.newPage();
+    await page.setContent(fullHtml, { waitUntil: "networkidle0" });
+
+    const pdfBuffer = await page.pdf({
+      format: "A4",
+      printBackground: true,
+    });
+
+    await browser.close();
 
     res.set({
-      "Content-Type":
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      "Content-Disposition":
-        "attachment; filename=edited.docx"
+      "Content-Type": "application/pdf",
+      "Content-Disposition": "attachment; filename=LexiNote.pdf",
+      "Content-Length": pdfBuffer.length,
     });
 
-    res.send(buffer);
+    res.send(pdfBuffer);
 
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Save failed" });
+    res.status(500).json({ message: "PDF generation failed" });
   }
 });
 
