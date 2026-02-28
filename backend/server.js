@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 import multer from "multer";
 import mammoth from "mammoth";
 import fs from "fs";
-import HTMLtoDOCX from "html-to-docx";
 
 dotenv.config();
 
