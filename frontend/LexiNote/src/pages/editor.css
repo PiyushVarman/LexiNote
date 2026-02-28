@@ -22,10 +22,9 @@ body {
     border-radius: 10px;
 }
 
-
-
 #editor {
-    height: 70vh;
+    font-family: "Arial" !important;
+    height: 50vh;
     background: white;
     color: black !important;
     border-radius: 10px;
@@ -119,26 +118,56 @@ button:hover {
 
 @media print {
 
-  body {
+    .ql-editor{
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+    .ql-editor p:first-child {
+    margin-top: 0 !important;
+  }
+
+  @page {
+    margin: 20mm;
+    border: 2px solid black;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
     background: white !important;
   }
 
-  /* Hide everything by default */
+  /* Hide everything */
   body * {
-    visibility: hidden;
+    visibility: hidden !important;
   }
 
-  /* Show only editor */
-  #editor, #editor * {
-    visibility: visible;
+  /* Show the editor container and its content */
+  #editor,
+  #editor * {
+    visibility: visible !important;
   }
 
-  /* Position editor properly */
+  /* Remove layout constraints */
   #editor {
-    border:0;
     position: absolute;
     left: 0;
     top: 0;
-    width: 100%;
+    width: 100% !important;
+    border-radius: 0;
+    border:0;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+
+    font-size: 19px !important;
+    line-height: 1.7;
+
+    transform: none !important;
   }
+
 }

@@ -78,7 +78,14 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 
     fs.unlinkSync(req.file.path);
 
-    res.json({ content: result.value });
+    let html = result.value;
+
+    // Convert inline text-align styles to align attribute
+    html = html.replace(/text-align:\s*center/gi, 'align="center"');
+    html = html.replace(/text-align:\s*right/gi, 'align="right"');
+    html = html.replace(/text-align:\s*justify/gi, 'align="justify"');
+
+    res.json({ content: html });
 
   } catch (error) {
     res.status(500).json({ message: "File conversion failed" });
