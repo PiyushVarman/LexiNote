@@ -5,15 +5,13 @@ import dotenv from "dotenv";
 import multer from "multer";
 import mammoth from "mammoth";
 import fs from "fs";
-import puppeteer from "puppeteer-core";
 
 dotenv.config();
 
 const app = express();
 
 app.use(cors());
-app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ limit: "10mb", extended: true }));
+app.use(express.json());
 
 mongoose
   .connect(process.env.MONGO_URI)
@@ -84,67 +82,6 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 
   } catch (error) {
     res.status(500).json({ message: "File conversion failed" });
-  }
-});
-
-
-
-app.post("/save", async (req, res) => {
-  try {
-    const html = req.body.content;
-
-    if (!html) {
-      return res.status(400).json({ message: "Empty document" });
-    }
-
-    const fullHtml = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset="utf-8" />
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            padding: 40px;
-          }
-          * {
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-          }
-        </style>
-      </head>
-      <body>
-        ${html}
-      </body>
-      </html>
-    `;
-
-    const browser = await puppeteer.launch({
-      executablePath: "/usr/bin/chromium",
-      args: ["--no-sandbox", "--disable-setuid-sandbox","--disable-dev-shm-usage","--disable-gpu"],
-    });
-
-    const page = await browser.newPage();
-    await page.setContent(fullHtml, { waitUntil: "networkidle0" });
-
-    const pdfBuffer = await page.pdf({
-      format: "A4",
-      printBackground: true,
-    });
-
-    await browser.close();
-
-    res.set({
-      "Content-Type": "application/pdf",
-      "Content-Disposition": "attachment; filename=LexiNote.pdf",
-      "Content-Length": pdfBuffer.length,
-    });
-
-    res.send(pdfBuffer);
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "PDF generation failed" });
   }
 });
 

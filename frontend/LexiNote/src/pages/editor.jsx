@@ -60,28 +60,14 @@ export default function Editor() {
   };
 
   const handleSave = async () => {
-    setStatus("Saving...");
+    setStatus("Preparing PDF...");
 
-    const html = quillRef.current.root.innerHTML;
+    document.title = docTitle||"Untitled Document";
 
-    const response = await fetch(
-      "https://lexinote.onrender.com/save",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: html }),
-      }
-    );
-
-    const blob = await response.blob();
-    const url = window.URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${docTitle||"Untitled Document"}.docx`;
-    a.click();
-
-    setStatus("Downloaded");
+    setTimeout(() => {
+      window.print();
+      setStatus("Ready");
+    }, 300);
   };
 
   const handleDrop = (e) => {

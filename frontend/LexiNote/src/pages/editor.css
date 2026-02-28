@@ -116,3 +116,29 @@ button:hover {
 .ql-font-monospace {
   font-family: "Courier New", Courier, monospace;
 }
+
+@media print {
+
+  body {
+    background: white !important;
+  }
+
+  /* Hide everything by default */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Show only editor */
+  #editor, #editor * {
+    visibility: visible;
+  }
+
+  /* Position editor properly */
+  #editor {
+    border:0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
