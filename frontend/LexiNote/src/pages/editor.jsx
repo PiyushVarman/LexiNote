@@ -23,7 +23,6 @@ export default function Editor() {
         modules: {
           toolbar: "#toolbar", // attach to manual toolbar
         },
-        formats:["bold","italic","underline","strike","color","background","align","list","font","size"]
       });
 
       quillRef.current.on("text-change", () => {
@@ -53,7 +52,7 @@ export default function Editor() {
       );
 
       const data = await response.json();
-      quillRef.current.clipboard.dangerouslyPasteHTML(data.content);
+      quillRef.current.root.innerHTML = data.content;
       setStatus("File Loaded");
     } catch {
       setStatus("Upload Failed");
