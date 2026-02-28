@@ -103,11 +103,15 @@ app.post("/save", async (req, res) => {
       </html>
     `;
 
+    console.log("HTML length:", html.length);
+
     const buffer = await HTMLtoDOCX(fullHtml, null, {
       table: { row: { cantSplit: true } },
       footer: false,
       pageNumber: false,
     });
+
+    console.log("Buffer size:", buffer.length);
 
     res.set({
       "Content-Type":
