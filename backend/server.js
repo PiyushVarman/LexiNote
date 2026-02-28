@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import multer from "multer";
 import mammoth from "mammoth";
 import fs from "fs";
+import puppeteer from "puppeteer-core";
 
 dotenv.config();
 
@@ -87,7 +88,6 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 });
 
 
-import puppeteer from "puppeteer";
 
 app.post("/save", async (req, res) => {
   try {
@@ -120,7 +120,8 @@ app.post("/save", async (req, res) => {
     `;
 
     const browser = await puppeteer.launch({
-      args: ["--no-sandbox", "--disable-setuid-sandbox","--disable-dev-shm-usage"],
+      executablePath: "/usr/bin/chromium",
+      args: ["--no-sandbox", "--disable-setuid-sandbox","--disable-dev-shm-usage","--disable-gpu"],
     });
 
     const page = await browser.newPage();
