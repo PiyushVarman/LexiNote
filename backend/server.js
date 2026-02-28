@@ -103,7 +103,7 @@ app.post("/save", async (req, res) => {
       </html>
     `;
 
-    const docxBuffer = htmlDocx.asBlob(fullHtml);
+    const docxBuffer = htmlDocx.asBuffer(fullHtml);
 
     res.set({
       "Content-Type":
