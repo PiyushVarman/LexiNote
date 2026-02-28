@@ -3,34 +3,38 @@ body {
     font-family: 'Segoe UI', sans-serif;
 }
 
-
-.container {
+.container{
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
     padding: 5vh;
+    padding-top: 1vh;
+    gap:10px;
     transform: translateY(10vh);
     animation: fade-up 0.75s ease forwards;
     opacity:0;
 }
 
 
-.toolbar {
-    background: white;
-    border-radius: 10px 10px 0 0;
+#toolbar, .toolbar {
+    background: white !important;
+    border-radius: 10px;
 }
+
+
 
 #editor {
     height: 70vh;
     background: white;
     color: black !important;
-    border-radius: 0 0 10px 10px;
+    border-radius: 10px;
 }
 
 #editortools{
     background-color: black;
-    color: white;
+    border-radius: 10px;
+    color: black;
 }
 
 .buttons{
@@ -45,12 +49,12 @@ body {
 }
 
 .dark {
-    background: #1e1e1e !important;
+    background-color: #1e1e1e !important;
     color: white !important;
 }
 
 .dark #editor {
-    background: #2b2b2b;
+    background-color: #2b2b2b;
     color: white;
 }
 button {
@@ -63,13 +67,24 @@ button:hover {
 .buttons{
     background: linear-gradient(45deg, #ff6b6b, #ff8e53);
 }
+
 #dropZone {
-    border: 2px dashed #aaa;
-    padding: 20px;
-    text-align: center;
-    margin-bottom: 10px;
-    border-radius: 8px;
+  border: 2px dashed #999;
+  background-color: transparent !important;
+  padding: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 500;
+  color: white;
+  background-color: transparent;
+  border-radius: 10px;
+  transition: 0.2s;
 }
+
+#dropZone:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
 .doc-title {
     width: 100%;
     font-size: 24px;
@@ -85,4 +100,19 @@ button:hover {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Sans Serif */
+.ql-font-sans-serif {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Serif */
+.ql-font-serif {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* Monospace */
+.ql-font-monospace {
+  font-family: "Courier New", Courier, monospace;
 }

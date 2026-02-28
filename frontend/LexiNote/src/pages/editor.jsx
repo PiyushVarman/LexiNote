@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import "./editor.css";
+const Font = Quill.import("formats/font");
+Font.whitelist = ["sans-serif", "serif", "monospace"];
+Quill.register(Font, true);
 
 export default function Editor() {
   const editorRef = useRef(null);
@@ -12,11 +14,13 @@ export default function Editor() {
   const [status, setStatus] = useState("Ready");
   const [wordCount, setWordCount] = useState(0);
 
-  // Initialize Quill (default toolbar like original)
   useEffect(() => {
     if (!quillRef.current) {
       quillRef.current = new Quill(editorRef.current, {
         theme: "snow",
+        modules: {
+          toolbar: "#toolbar", // attach to manual toolbar
+        },
       });
 
       quillRef.current.on("text-change", () => {
@@ -28,7 +32,6 @@ export default function Editor() {
     }
   }, []);
 
-  // Upload
   const handleUpload = async (file) => {
     if (!file) return;
 
@@ -54,7 +57,6 @@ export default function Editor() {
     }
   };
 
-  // Save
   const handleSave = async () => {
     setStatus("Saving...");
 
@@ -80,7 +82,6 @@ export default function Editor() {
     setStatus("Downloaded");
   };
 
-  // Drag & Drop
   const handleDrop = (e) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
@@ -94,10 +95,6 @@ export default function Editor() {
   return (
     <div className="container">
       <div className="toolbar">
-        <button className="buttons" onClick={() => fileInputRef.current.click()}>Upload</button>
-
-        <button className="buttons" onClick={handleSave}>Download</button>
-
         <input
           type="file"
           accept=".docx"
@@ -107,18 +104,46 @@ export default function Editor() {
         />
       </div>
 
-      <div
-        id="editortools"
-        onDrop={handleDrop}
-        onDragOver={handleDragOver}
-      >
-    
+      {/* Visible Drop Zone */}
+      <div id="dropZone" onDrop={handleDrop} onDragOver={handleDragOver}>
+        Drag & Drop .docx file here
+      </div>
+
+      {/* EXACT TOOLBAR — inserted here without moving layout */}
+      <div id="toolbar">
+        <select className="ql-font"></select>
+        <select className="ql-size"></select>
+        <button className="ql-bold"></button>
+        <button className="ql-italic"></button>
+        <button className="ql-underline"></button>
+        <button className="ql-strike"></button>
+        <button className="ql-color"></button>
+        <button className="ql-background"></button>
+        <button className="ql-align"></button>
+        <button className="ql-list" value="ordered"></button>
+        <button className="ql-list" value="bullet"></button>
+      </div>
+
+      <div id="editortools">
         <div ref={editorRef} id="editor"></div>
       </div>
 
       <div className="status-bar">
-        <span>Words: {wordCount}</span>&nbsp;
+        <span>Words: {wordCount}</span> | &nbsp;
         <span>Status: {status}</span>
+      </div>
+
+      <div className="toolbar">
+        <button
+          className="buttons"
+          onClick={() => fileInputRef.current.click()}
+        >
+          📂 Upload File
+        </button>
+
+        <button className="buttons" onClick={handleSave}>
+          💾 Download
+        </button>
       </div>
     </div>
   );
