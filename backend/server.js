@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import multer from "multer";
 import mammoth from "mammoth";
 import fs from "fs";
-
+import htmlDocx from "html-docx-js";
 import {Document, Packer, Paragraph, TextRun} from "docx";
 
 dotenv.config();
@@ -73,9 +73,10 @@ app.get("/random", async (req, res) => {
 
 app.post("/upload", upload.single("file"), async (req, res) => {
   try {
-    const result = await mammoth.convertToHtml({
-      path: req.file.path
-    });
+    const result = await mammoth.convertToHtml(
+      { path: req.file.path },
+      { includeDefaultStyleMap: true }
+    );
 
     fs.unlinkSync(req.file.path);
 
@@ -91,19 +92,14 @@ app.post("/save", async (req, res) => {
   try {
     const html = req.body.content;
 
-    const doc = new Document({
-      sections: [{
-        children: [
-          new Paragraph({
-            children: [
-              new TextRun(html.replace(/<[^>]*>?/gm, ""))
-            ]
-          })
-        ]
-      }]
-    });
-
-    const buffer = await Packer.toBuffer(doc);
+    const docxBuffer = htmlDocx.asBlob(`
+      <!DOCTYPE html>
+      <html>
+      <body>
+        ${html}
+      </body>
+      </html>
+    `);
 
     res.set({
       "Content-Type":
@@ -112,7 +108,7 @@ app.post("/save", async (req, res) => {
         "attachment; filename=edited.docx"
     });
 
-    res.send(buffer);
+    res.send(docxBuffer);
 
   } catch (error) {
     res.status(500).json({ message: "Save failed" });
