@@ -74,7 +74,7 @@ button:hover {
   border-color: #646cff;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
     --bg-main: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
     --text-main: #ffffff;
@@ -115,19 +115,6 @@ button:hover {
     padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
-  }
-
-  .theme-btn {
-    background: none;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 5px;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   body.light-mode .theme-btn {

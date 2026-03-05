@@ -3,9 +3,9 @@
 .topnav {
 	@apply bg-linear-to-r from-blue-950 to-blue-800;
 	overflow: hidden;
-	display: flex;
+	display: flex ;
 	align-items: center;
-	justify-content: center;
+	justify-content: left;
 	position: sticky;
 	padding: 0vh 0vw;
 	top: 0vh;
@@ -63,7 +63,7 @@
 	margin-right: 1em;
 	margin-left: 1em;
 }
-.dark_mode{
+.theme-btn{
 	border-collapse: collapse;
 	border-radius: 100%;
 	@apply bg-blue-600;
