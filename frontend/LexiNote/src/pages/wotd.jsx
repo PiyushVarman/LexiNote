@@ -42,7 +42,7 @@ export default function WOTD(){
         <>
             <main>
                 <h1>Random Word</h1>
-                <button onClick={handleRandom}>Generate!</button>
+                <button className="refresh-btn" onClick={handleRandom}>Generate!</button>
                 <div className="results">
                 {error && <p className="error">{error}</p>}
 
