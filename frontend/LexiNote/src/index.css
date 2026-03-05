@@ -76,7 +76,63 @@ button:hover {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: white;
-    background-color: #ffffff;
+    --bg-main: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    --text-main: #ffffff;
+    --nav-link: #cbd5e1;
+    --logo-color: #ffffff;
+    --accent-btn: #2563eb;
+    --btn-text: #ffffff;
+  }
+
+  body.light-mode {
+    --bg-main: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+    --text-main: #0f172a;
+    --nav-link: #475569;
+    --logo-color: #2563eb;
+    --accent-btn: #3b82f6;
+    --btn-text: #fffff;
+  }
+
+  body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    transition: all 0.3s ease;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .home { color: var(--logo-color) !important; text-decoration: none; }
+  .link { color: var(--nav-link) !important; text-decoration: none; }
+
+  h1, h2, .title {
+    color: var(--text-main);
+  }
+
+  .generate-btn {
+    background-color: var(--accent-btn);
+    color: var(--btn-text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .theme-btn {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body.light-mode .theme-btn {
+    border-color: rgba(0, 0, 0, 0.1);
   }
 }
+
+
