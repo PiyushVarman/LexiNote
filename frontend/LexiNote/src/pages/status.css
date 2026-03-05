@@ -1,0 +1,38 @@
+.status{
+    padding-top: 0;
+}
+    
+p{
+    font-family: Montserrat;
+    font-size: 1.5vw;
+}
+
+.text
+{
+    line-height:2;
+}
+
+.linktext
+{
+    display: inline-block;
+    color: white;
+    font-size: 2vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    border: 2px solid white;
+    background-color: #2b7fff;
+    transition: 0.2s all ease-in-out;
+    font-family: Consolas;
+}
+
+.linktext:hover
+{
+    border-radius: 10px;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    transform: scale(1.1);
+}
+
+.linktext:active{
+    transform: scale(0.9);
+}
