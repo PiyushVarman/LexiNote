@@ -15,9 +15,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body{
-  @apply !bg-linear-to-b from-blue-400 to-blue-900 ;
-}
+  /* @apply !bg-linear-to-b from-blue-400 to-blue-900 ; */
 
 h1{
   @apply text-7xl;
@@ -27,9 +25,7 @@ h1{
 
 main
 {
-  
   @apply h-[80vh];
-
   @apply my-[4vh];
   @apply py-[10vh];
   @apply mx-[2vw];
@@ -78,7 +74,7 @@ button:hover {
   :root {
     --bg-main: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
     --text-main: #ffffff;
-    --nav-link: #cbd5e1;
+    --nav-link: white;
     --logo-color: #ffffff;
     --accent-btn: #2563eb;
     --btn-text: #ffffff;
@@ -86,9 +82,10 @@ button:hover {
 
   body.light-mode {
     --bg-main: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-    --text-main: #0f172a;
+    --text-main: black;
     --nav-link: #475569;
-    --logo-color: #2563eb;
+    --logo-color: white;
+    --nav-link: white;
     --accent-btn: #3b82f6;
     --btn-text: #fffff;
   }
@@ -101,8 +98,8 @@ button:hover {
     margin: 0;
   }
 
-  .home { color: var(--logo-color) !important; text-decoration: none; }
-  .link { color: var(--nav-link) !important; text-decoration: none; }
+  .home { color: var(--logo-color) ; text-decoration: none; }
+  .link { color: var(--nav-link) ; text-decoration: none; }
 
   h1, h2, .title {
     color: var(--text-main);
