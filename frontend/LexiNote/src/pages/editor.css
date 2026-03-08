@@ -13,13 +13,9 @@ body {
     transform: translateY(10vh);
     animation: fade-up 0.75s ease forwards;
     opacity:0;
+    background-color: linear-gradient(135deg, #667eea, #764ba2) !important;
 }
 
-body.light-mode
-{
-  background-color: var(--container-bg);
-  color: white;
-}
 
 #toolbar, .toolbar {
     background: white !important;
@@ -84,7 +80,7 @@ button:hover {
   margin-bottom: 10px;
   text-align: center;
   font-weight: 500;
-  color: white;
+  color: black;
   background-color: transparent;
   border-radius: 10px;
   transition: 0.2s;
