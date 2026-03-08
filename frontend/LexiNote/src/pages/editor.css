@@ -7,7 +7,6 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background: linear-gradient(135deg, #667eea, #764ba2) !important;
     padding: 5vh;
     padding-top: 1vh;
     gap:10px;
@@ -16,6 +15,11 @@ body {
     opacity:0;
 }
 
+body.light-mode
+{
+  background-color: var(--container-bg);
+  color: white;
+}
 
 #toolbar, .toolbar {
     background: white !important;
@@ -25,10 +29,16 @@ body {
 #editor {
     font-family: "Arial" !important;
     height: 50vh;
-    background: white;
-    color: black !important;
     border-radius: 10px;
+    background-color: white;
 }
+
+#editor.light-mode
+{
+    background-color: white !important;
+}
+
+
 
 #editortools{
     background-color: black;
@@ -106,12 +116,10 @@ button:hover {
   font-family: Arial, Helvetica, sans-serif !important;
 }
 
-/* Serif */
 .ql-font-serif {
   font-family: Georgia, "Times New Roman", serif;
 }
 
-/* Monospace */
 .ql-font-monospace {
   font-family: "Courier New", Courier, monospace;
 }
@@ -141,18 +149,15 @@ button:hover {
     background: white !important;
   }
 
-  /* Hide everything */
   body * {
     visibility: hidden !important;
   }
 
-  /* Show the editor container and its content */
   #editor,
   #editor * {
     visibility: visible !important;
   }
 
-  /* Remove layout constraints */
   #editor {
     position: absolute;
     left: 0;

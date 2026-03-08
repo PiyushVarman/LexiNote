@@ -21,7 +21,7 @@ export default function Editor() {
       quillRef.current = new Quill(editorRef.current, {
         theme: "snow",
         modules: {
-          toolbar: "#toolbar", // attach to manual toolbar
+          toolbar: "#toolbar", 
         },
       });
 
