@@ -19,7 +19,7 @@ export default function Navbar(){
         <div className="topnav">
             <Link className="home" to="/">✏️LexiNote</Link>
             <Link className="link" to="/dictionary">Dictionary📕</Link>
-            <Link className="link" to="/random_word">Random Word 🎲</Link>
+            <Link className="link" to="/random_word">Random Word🎲</Link>
             <Link className="link" to="/editor">Text Editor📝</Link>
             <Link className="link" to="/status">Status📊</Link>
 			<button id="theme-toggle" className="theme-btn" onClick={() => setIsLight(!isLight)}>

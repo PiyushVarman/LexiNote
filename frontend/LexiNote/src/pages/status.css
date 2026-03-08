@@ -33,6 +33,9 @@ p{
     transform: scale(1.1);
 }
 
+footer{
+    margin-top: 5vh;
+}
 .linktext:active{
     transform: scale(0.9);
 }

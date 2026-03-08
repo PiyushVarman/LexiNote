@@ -43,6 +43,7 @@ export default function Dictionary() {
   return (
     <main>
       <h1>Dictionary</h1>
+      <p>Find meanings, synonyms, and usage instantly.</p>
       <div className="search-box">
         <input type="text" placeholder="Search a word..." value={word} onChange={(e) => setWord(e.target.value)}onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />

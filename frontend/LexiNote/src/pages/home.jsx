@@ -9,9 +9,9 @@ export default function Home(){
                 <div className="border-2 border-white bg-gray-900 rounded-xl  mx-10 mb-10 p-10 text-xl text-white hover:scale-101 hover:bg-gray-800 transition-all duration-500 font-['Inconsolata'] italic">LexiNote is the all-in-one website for your word processing needs.<br/>Equipped with a powerful dictionary and versatile text editor, all on the web.
                 </div>
                 <div className="flex flex-row justify-center gap-x-[1vw] *:bg-blue-500 *:hover:scale-110 *:hover:rounded-xl *:hover:shadow-2xl *:active:scale-95 *:active:shadow-none *:transtion *:duration-200 *:transition-all: *duration-10">
-                <Link to="/dictionary" className="hello text-2xl outline p-5 text-white hover:shadow-2xl">Dictionary</Link>
-                <Link to="/random_word" className="hello text-2xl outline px-5 pt-5">Random Word</Link>
-                <Link to="/editor" className="hello text-2xl outline px-10 pt-5">Editor</Link>
+                <Link to="/dictionary" className="hello text-2xl outline p-5 text-white hover:shadow-2xl">📚Dictionary</Link>
+                <Link to="/random_word" className="hello text-2xl outline px-5 pt-5">🔀Random Word</Link>
+                <Link to="/editor" className="hello text-2xl outline px-10 pt-5">📝Editor</Link>
                 </div>
             </main>
         </>

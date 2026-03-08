@@ -14,12 +14,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-  /* @apply !bg-linear-to-b from-blue-400 to-blue-900 ; */
 
 h1{
   @apply text-7xl;
   @apply font-bold;
-  @apply p-10;
+  @apply px-10;
+  @apply py-5;
 }
 
 main
@@ -30,6 +30,7 @@ main
   @apply mx-[2vw];
   @apply rounded-3xl;
   @apply bg-black/30;
+  backdrop-filter: blur(100px);
   overflow: auto;
   transition: all 0.2s ease-in-out;
   opacity: 0;
@@ -68,8 +69,11 @@ button {
 button:hover {
   border-color: #646cff;
 }
+
+/* linear-gradient(180deg, #0f172a 0%, #1e293b 100%); */
   :root {
-    --bg-main: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    /* --bg-main: linear-gradient(180deg,#1e3a8a 0%, #3b82f6 100% );  */
+    --bg-main: url(src/assets/dark-bg.jpg);
     --text-main: #ffffff;
     --nav-link: #ffffff;
     --logo-color: #ffffff;
@@ -78,17 +82,19 @@ button:hover {
   }
 
   body.light-mode {
-    --bg-main: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-    --text-main: black !important;
+    --bg-main: url(src/assets/light-bg.jpg);
+    --text-main: #000000 !important;
     --nav-link: #475569;
-    --logo-color: white;
-    --nav-link: white;
+    --logo-color: #ffffff;
+    --nav-link: #ffffff;
     --accent-btn: #3b82f6;
-    --btn-text: #fffff;
+    --btn-text: #ffffff;
   }
 
   body {
     background: var(--bg-main);
+    background-attachment: fixed;
+    background-size: cover;
     color: var(--text-main);
     transition: all 0.3s ease;
     min-height: 100vh;

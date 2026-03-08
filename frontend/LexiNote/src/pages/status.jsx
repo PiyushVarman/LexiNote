@@ -15,6 +15,7 @@ export default function Status(){
                 </div>
                 <br/><br/>
                 <a className='linktext' href="https://github.com/piyushvarman/lexinote" target="_blank">Source Code</a>
+                <footer>© 2026 LexiNote • Built for learning and writing</footer>
             </main>
         </>
     );

@@ -42,6 +42,8 @@ export default function WOTD(){
         <>
             <main>
                 <h1>Random Word</h1>
+                <p>Explore a random word and learn something new today.</p>
+                <br/>
                 <button className="refresh-btn" onClick={handleRandom}>Generate!</button>
                 <div className="results">
                 {error && <p className="error">{error}</p>}
