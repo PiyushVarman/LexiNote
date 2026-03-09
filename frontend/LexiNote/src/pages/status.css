@@ -1,5 +1,10 @@
 .status{
     padding-top: 0;
+    overflow: hidden;
+}
+
+.statusheader{
+    padding-top: 6vh;
 }
     
 p{
@@ -7,6 +12,9 @@ p{
     font-size: 1.5vw;
 }
 
+footer{
+    padding: 0;
+}
 .text
 {
     line-height:2;
@@ -19,6 +27,7 @@ p{
     font-size: 2vw;
     padding-left: 0.5vw;
     padding-right: 0.5vw;
+    margin-bottom: 0px;
     border: 2px solid white;
     background-color: #2b7fff;
     transition: 0.2s all ease-in-out;
@@ -31,6 +40,7 @@ p{
     padding-left: 1vw;
     padding-right: 1vw;
     transform: scale(1.1);
+    box-shadow: 0vw 1vw 2vw black;
 }
 
 footer{

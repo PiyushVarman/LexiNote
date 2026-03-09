@@ -5,7 +5,7 @@ export default function Status(){
     return(
         <>
             <main className="status">
-                <h1>Status</h1>
+                <h1 className="statusheader">Status</h1>
                 <p>Built on the <strong>MERN</strong> Stack</p>
                 <div className="text">
                     <p><strong><br/>MongoDB:</strong> Contains more than 2,00,000 words with definitions, parts of speech and synonyms, all hosted online.</p>
