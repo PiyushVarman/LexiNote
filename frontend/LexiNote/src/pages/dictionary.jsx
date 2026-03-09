@@ -57,7 +57,7 @@ export default function Dictionary() {
           <>
             <h2>{results[0].word.replace(/_/g," ")}</h2>
             <br/>
-            <p>{results.length} found</p>
+            <p>{results.length} definitions found</p>
             <br/>
             {results.map((item, index) => (
               <div key={index} className="meaning">
