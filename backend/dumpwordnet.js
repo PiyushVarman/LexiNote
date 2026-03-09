@@ -10,7 +10,6 @@ dotenv.config();
 const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri);
 
-// Path to WordNet dict folder
 const WORDNET_DICT = wordnet.path;
 
 

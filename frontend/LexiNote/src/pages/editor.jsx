@@ -93,7 +93,6 @@ export default function Editor() {
           />
         </div>
 
-        {/* Visible Drop Zone */}
         <div id="dropZone" onDrop={handleDrop} onDragOver={handleDragOver}>
           Drag & Drop .docx file here
         </div>
@@ -107,7 +106,6 @@ export default function Editor() {
         placeholder="Enter Document Name"
         />
 
-        {/* EXACT TOOLBAR — inserted here without moving layout */}
         <div id="toolbar">
           <select className="ql-font" title="Font"></select>
           <select className="ql-size" title="Size"></select>
