@@ -108,6 +108,10 @@ button:hover {
     color: var(--text-main);
   }
 
+  h1{
+    font-family: "Montserrat";
+  }
+
   .generate-btn {
     background-color: var(--accent-btn);
     color: var(--btn-text);
