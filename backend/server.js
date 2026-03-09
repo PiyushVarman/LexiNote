@@ -85,7 +85,6 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   }
 });
 
-// Start Server
 app.listen(process.env.PORT, () => {
   console.log(`Backend running at http://localhost:${process.env.PORT}`);
 });
