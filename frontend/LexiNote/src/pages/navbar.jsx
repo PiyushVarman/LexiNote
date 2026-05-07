@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Moon, Sun } from 'lucide-react';
 import "./Navbar.css"
 
 export default function Navbar(){
@@ -23,7 +24,7 @@ export default function Navbar(){
             <Link className="link" to="/editor">Text Editor📝</Link>
             <Link className="link" to="/status">Status📊</Link>
 			<button id="theme-toggle" className="theme-btn" onClick={() => setIsLight(!isLight)}>
-                <span id="theme-icon" title={isLight ? "Light Mode" : "Dark Mode"}>{isLight ? "☀️" : "🌙"}</span>
+                <span id="theme-icon" title={isLight ? "Light Mode" : "Dark Mode"}>{isLight ? <Sun/> : <Moon/>}</span>
             </button>
         </div>
     );
